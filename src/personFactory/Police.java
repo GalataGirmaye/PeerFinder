@@ -2,12 +2,15 @@ package personFactory;
 
 import java.util.Date;
 
+import mainPkg.Application;
+
 public class Police implements Person {
 
 	 String name,ID,sex,location;
 	 Date dob;
 	 int level;
-	
+	 Application application;
+	 
 	//Getter methods
 	@Override
 	public String getName() {
@@ -43,6 +46,11 @@ public class Police implements Person {
 	public String getLocation() {
 
 		return this.location;
+	}
+	@Override
+	public Application getApplication() {
+
+		return this.application;
 	}
 	
 	
@@ -81,5 +89,19 @@ public class Police implements Person {
 
 		this.location = location;
 	}
+	
+	@Override
+	public void setApplication(Application application) {
 
+		this.application = application;
+	}
+	
+	 public void setValues(String name,String id,String sex,Date dob,String location, int level) {
+		  this.name = name;
+		  this.ID = id;
+		  this.sex = sex;
+		  this.dob  = dob;;
+		  this.location = location;
+		  this.level = level;
+	  }
 }
