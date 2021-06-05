@@ -23,6 +23,7 @@ public interface Person {
 	  
 	  public void setName(String name);
 	  public void setID(String ID);
+	  public void setPassword(String str);
 	  public void setSex(String sex);
 	  public void setDOB(Date dob);
 	  public void setLevel(int level);
@@ -31,5 +32,6 @@ public interface Person {
 	  
 	  
 	  // Operational Methods
-	  public void setValues(String name,String id,String sex,Date dob,String location, int level);
+	  public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level);
+	  public boolean checkPassword(String str);
 }

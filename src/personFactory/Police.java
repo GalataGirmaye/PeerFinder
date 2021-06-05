@@ -6,7 +6,7 @@ import mainPkg.Application;
 
 public class Police implements Person {
 
-	 String name,ID,sex,location;
+	 String name,ID,sex,location,password;
 	 Date dob;
 	 int level;
 	 Application application;
@@ -67,6 +67,11 @@ public class Police implements Person {
 		this.ID=ID;
 	}
 
+	  @Override
+	  public void setPassword(String passwd) {
+    	   this.password=passwd;
+       }
+
 	@Override
 	public void setSex(String sex) {
 		this.sex=sex;
@@ -96,12 +101,22 @@ public class Police implements Person {
 		this.application = application;
 	}
 	
-	 public void setValues(String name,String id,String sex,Date dob,String location, int level) {
+	//Operational password
+	 public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
+		  this.password=passwd;
 		  this.sex = sex;
 		  this.dob  = dob;;
 		  this.location = location;
 		  this.level = level;
+	  }
+	 public boolean checkPassword(String passwd) {
+		  if(passwd.equals(password))
+		  {
+			  return true;
+		  }
+		  
+		  return false;
 	  }
 }

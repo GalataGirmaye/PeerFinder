@@ -5,10 +5,11 @@ import mainPkg.Application;
 
 public class Doctor implements Person {
 
-	 String name,ID,sex,location;
+	 String name,ID,sex,location,password;
 	 Date dob;
 	 int level;
 	 Application application;
+	 
 	//Getter methods
 	@Override
 	public String getName() {
@@ -63,6 +64,10 @@ public class Doctor implements Person {
 	public void setID(String ID) {
 		this.ID=ID;
 	}
+       @Override
+	  public void setPassword(String passwd) {
+    	   this.password=passwd;
+       }
 
 	@Override
 	public void setSex(String sex) {
@@ -93,13 +98,25 @@ public class Doctor implements Person {
 		this.application = application;
 	}
 	
-	  public void setValues(String name,String id,String sex,Date dob,String location, int level) {
+	//Operational Methods
+	  public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
+		  this.password=passwd;
 		  this.sex = sex;
 		  this.dob  = dob;;
 		  this.location = location;
 		  this.level = level;
 		  
 	  }
+	  
+	  public boolean checkPassword(String passwd) {
+		  if(passwd.equals(password))
+		  {
+			  return true;
+		  }
+		  
+		  return false;
+	  }
+	  
 }
