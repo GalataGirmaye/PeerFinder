@@ -5,7 +5,7 @@ import mainPkg.Application;
 
 public class Doctor implements Person {
 
-	 String name,ID,sex,location,password;
+	 String name,ID,sex,location,password,email,phone,notification;
 	 Date dob;
 	 int level;
 	 Application application;
@@ -34,7 +34,14 @@ public class Doctor implements Person {
 
 		return this.dob;
 	}
-
+    @Override
+	public String getPhone() {
+	   return phone;	
+	}
+    @Override
+	public String getEmail() {
+		return email;
+	}
 	@Override
 	public int getLevel() {
 
@@ -52,7 +59,10 @@ public class Doctor implements Person {
 
 		return this.application;
 	}
-	
+    public String getNotification() {
+    	return this.notification;
+    }
+
 	
    // Setter methods
 	@Override
@@ -65,10 +75,9 @@ public class Doctor implements Person {
 		this.ID=ID;
 	}
        @Override
-	  public void setPassword(String passwd) {
+	public void setPassword(String passwd) {
     	   this.password=passwd;
        }
-
 	@Override
 	public void setSex(String sex) {
 		this.sex=sex;
@@ -76,10 +85,19 @@ public class Doctor implements Person {
 
 	@Override
 	public void setDOB(Date dob) {
-                
+		
 		this.dob=dob;
 	}
-
+	@Override
+	public void setPhone(String phone) {
+		  this.phone=phone;
+		 
+	  }
+	@Override
+	public void setEmail(String email) {
+		  this.email=email;
+	  }
+	
 	@Override
 	public void setLevel(int level) {
 
@@ -97,14 +115,19 @@ public class Doctor implements Person {
 
 		this.application = application;
 	}
-	
+	public void setNotification(String notification) {
+    	this.notification=notification;
+    }
+
 	//Operational Methods
-	  public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
+	  public void setValues(String name,String id,String passwd,String sex,Date dob,String phone,String email,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
 		  this.password=passwd;
 		  this.sex = sex;
-		  this.dob  = dob;;
+		  this.dob  = dob;
+		  this.phone=phone;
+		  this.email=email;
 		  this.location = location;
 		  this.level = level;
 		  
@@ -118,5 +141,10 @@ public class Doctor implements Person {
 		  
 		  return false;
 	  }
-	  
+	  public void updatePeer(Person peer) {
+		  
+		  this.notification="Contrats "+this.name+",You peer has been found!\nCheck your status to see details!";
+		  this.application.setPeer(peer);
+		  this.application.setStatus(true);
+	  }
 }

@@ -6,7 +6,7 @@ import mainPkg.Application;
 
 public class Judge implements Person {
 
-	 String name,ID,sex,location,password;
+	 String name,ID,sex,location,password,phone,email,notification;
 	 Date dob;
 	 int level;
 	 Application application;
@@ -52,6 +52,10 @@ public class Judge implements Person {
 
 		return this.application;
 	}
+    public String getNotification() {
+    	return this.notification;
+    }
+
 	
 	
 	
@@ -66,7 +70,7 @@ public class Judge implements Person {
 		this.ID=ID;
 	}
 	  @Override
-	  public void setPassword(String passwd) {
+	public void setPassword(String passwd) {
     	   this.password=passwd;
        }
 
@@ -80,7 +84,24 @@ public class Judge implements Person {
                 
 		this.dob=dob;
 	}
-
+	@Override
+	public void setPhone(String phone) {
+		  this.phone=phone;
+		 
+	  }
+	@Override
+	public void setEmail(String email) {
+		  this.email=email;
+	  }
+	
+	@Override
+	public String getPhone() {
+		   return phone;	
+		}
+	    @Override
+		public String getEmail() {
+			return email;
+		}
 	@Override
 	public void setLevel(int level) {
 
@@ -92,21 +113,25 @@ public class Judge implements Person {
 
 		this.location = location;
 	}
-	
-	
+		
 	@Override
 	public void setApplication(Application application) {
 
 		this.application = application;
 	}
+	public void setNotification(String notification) {
+    	this.notification=notification;
+    }
+
 	
-	
-	 public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
+	 public void setValues(String name,String id,String passwd,String sex,Date dob,String phone,String email,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
 		  this.password=passwd;
 		  this.sex = sex;
-		  this.dob  = dob;;
+		  this.dob  = dob;
+		  this.phone=phone;
+		  this.email=email;
 		  this.location = location;
 		  this.level = level;
 	  }
@@ -119,4 +144,11 @@ public class Judge implements Person {
 		  
 		  return false;
 	  }
+	 
+	  public void updatePeer(Person peer) {
+		  this.notification="Contrats "+this.name+",You peer has been found!\nCheck your status to see details!";
+		  this.application.setPeer(peer);
+		  this.application.setStatus(true);
+	  } 
+	
 }

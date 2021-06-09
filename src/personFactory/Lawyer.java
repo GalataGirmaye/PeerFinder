@@ -6,7 +6,7 @@ import mainPkg.Application;
 
 public class Lawyer implements Person {
 
-	 String name,ID,sex,location,password;
+	 String name,ID,sex,location,password,phone,email,notification;
 	 Date dob;
 	 int level;
 	 Application application;
@@ -37,6 +37,15 @@ public class Lawyer implements Person {
 	}
 
 	@Override
+	public String getPhone() {
+		   return phone;	
+		}
+	@Override
+	public String getEmail() {
+			return email;
+		}
+	
+	@Override
 	public int getLevel() {
 
 		return this.level;
@@ -53,7 +62,11 @@ public class Lawyer implements Person {
 
 		return this.application;
 	}
-	
+    public String getNotification() {
+    	return this.notification;
+    }
+
+
 	
 	
    // Setter methods
@@ -82,7 +95,16 @@ public class Lawyer implements Person {
                 
 		this.dob=dob;
 	}
-
+	@Override
+	public void setPhone(String phone) {
+		  this.phone=phone;
+		 
+	  }
+	@Override
+	public void setEmail(String email) {
+		  this.email=email;
+	  }
+	
 	@Override
 	public void setLevel(int level) {
 
@@ -100,14 +122,18 @@ public class Lawyer implements Person {
 
 		this.application = application;
 	}
-	
+	public void setNotification(String notification) {
+    	this.notification=notification;
+    }
 	//Operational methods
-	 public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
+	 public void setValues(String name,String id,String passwd,String sex,Date dob,String phone,String email,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
 		  this.password=passwd;
 		  this.sex = sex;
-		  this.dob  = dob;;
+		  this.dob  = dob;
+		  this.phone=phone;
+		  this.email=email;
 		  this.location = location;
 		  this.level = level;
 	  }
@@ -119,5 +145,11 @@ public class Lawyer implements Person {
 		  }
 		  
 		  return false;
+	  }
+	 
+	  public void updatePeer(Person peer) {
+		  this.notification="Contrats "+this.name+",You peer has been found!\nCheck your status to see details!";
+		  this.application.setPeer(peer);
+		  this.application.setStatus(true);
 	  }
 }

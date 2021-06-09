@@ -6,7 +6,7 @@ import mainPkg.Application;
 
 public class Teacher implements Person {
 
-	 String name,ID,sex,location,password;
+	 String name,ID,sex,location,password,phone,email,notification;
 	 Date dob;
 	 int level;
 	 Application application;
@@ -37,6 +37,15 @@ public class Teacher implements Person {
 	}
 
 	@Override
+	public String getPhone() {
+		   return this.phone;	
+		}
+	    @Override
+		public String getEmail() {
+			return this.email;
+		}
+	
+	@Override
 	public int getLevel() {
 
 		return this.level;
@@ -52,7 +61,11 @@ public class Teacher implements Person {
 
 		return this.application;
 	}
+    public String getNotification() {
+    	return this.notification;
+    }
 
+	
 	
 	
 	
@@ -82,7 +95,16 @@ public class Teacher implements Person {
                 
 		this.dob=dob;
 	}
-
+	@Override
+	public void setPhone(String phone) {
+		  this.phone=phone;
+		 
+	  }
+	@Override
+	public void setEmail(String email) {
+		  this.email=email;
+	  }
+	
 	@Override
 	public void setLevel(int level) {
 
@@ -99,9 +121,12 @@ public class Teacher implements Person {
 
 		this.application = application;
 	}
+    public void setNotification(String notification) {
+    	this.notification=notification;
+    }
 	
 	//Operational password
-	public void setValues(String name,String id,String passwd,String sex,Date dob,String location, int level) {
+	public void setValues(String name,String id,String passwd,String sex,Date dob,String phone,String email,String location, int level) {
 		  this.name = name;
 		  this.ID = id;
 		  this.password=passwd;
@@ -117,5 +142,10 @@ public class Teacher implements Person {
 		  }
 		  
 		  return false;
+	  }
+	public void updatePeer(Person peer) {
+		  this.notification="Contrats "+this.name+",You peer has been found!\nCheck your status to see details!";
+		  this.application.setPeer(peer);
+		  this.application.setStatus(true);
 	  }
 }

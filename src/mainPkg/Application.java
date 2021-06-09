@@ -20,4 +20,27 @@ public class Application {
 		this.requestLocation = request;
 		this.foundPeer = peer;
 	}
+	
+	
+	public String getReqLocation() {
+		return requestLocation;
+	}
+	public boolean getStatus() {
+		return status;
+	}
+	public Person getPeer() {
+		return foundPeer;
+	}
+	
+	//Setters
+	public void setReqLocation(String location) {
+		this.requestLocation = location;
+		
+	}
+	public void setStatus(boolean status) {
+		this.status=status;
+	}
+	public void setPeer(Person peer) {
+		this.foundPeer=peer;
+	}
 }
